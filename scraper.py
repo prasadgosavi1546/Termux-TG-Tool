@@ -49,7 +49,7 @@ all_participants = []
 all_participants = client.get_participants(target_group, aggressive=True)
  
 print('Saving In file...')
-with open("members.csv","w",encoding='UTF-8') as f:
+with open("member.csv","w",encoding='UTF-8') as f:
     writer = csv.writer(f,delimiter=",",lineterminator="\n")
     writer.writerow(['username','user id', 'access hash','name','group', 'group id'])
     for user in all_participants:
