@@ -2,13 +2,15 @@
 Members scraper, adder, bulk message sender.
 
 
-Fork this repo and edit your API KEY, HASH and Number in scraper.py and adder.py
+Fork this repo and edit your API KEY, HASH, and Number in scraper.py and adder.py
 
 Termux setup:
 
 $pkg install Github
 
 $pkg install python3
+
+$pip3 install telethon
 
 $git clone (your forked git link).git
 
@@ -32,5 +34,4 @@ $python3 adder.py member.csv
 ____________________
 ____________________
 
-I hope it will be helpful for you
-Owner: https://telegram.dog/wrong_user_name
+I hope it will be helpful for you: https://telegram.dog/wrong_user_name
