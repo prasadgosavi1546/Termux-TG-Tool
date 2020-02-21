@@ -16,7 +16,7 @@ client = TelegramClient(phone, api_id, api_hash)
 client.connect()
 if not client.is_user_authorized():
     client.send_code_request(phone)
-    client.sign_in(phone, input('Enter the code: '))
+    client.sign_in(phone, input('Verification Code enter kar: '))
  
 input_file = sys.argv[1]
 users = []
@@ -52,7 +52,7 @@ for chat in chats:
     except:
         continue
  
-print('Choose a group to add members:')
+print('Group select kar:')
 i=0
 for group in groups:
     print(str(i) + '- ' + group.title)
@@ -67,7 +67,7 @@ mode = int(input("Enter 1 to add by username or 2 to add by ID: "))
  
 for user in users:
     try:
-        print ("Adding {}".format(user['id']))
+        print ("By @Wrong_User_Name. Adding {}".format(user['id']))
         if mode == 1:
             if user['username'] == "":
                 continue
@@ -75,14 +75,14 @@ for user in users:
         elif mode == 2:
             user_to_add = InputPeerUser(user['id'], user['access_hash'])
         else:
-            sys.exit("Invalid Mode Selected. Please Try Again.")
+            sys.exit("Gandu sahi mode select kar.")
         client(InviteToChannelRequest(target_group_entity,[user_to_add]))
-        print("Wait 20 Seconds...")
-        time.sleep(20)
+        print("10 Seconds ruk jaa...")
+        time.sleep(10)
     except PeerFloodError:
-        print("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
+        print("Gandu bohot add kar diye. Ab kal aana. By @Wrong_User_Name.")
     except UserPrivacyRestrictedError:
-        print("The user's privacy settings do not allow you to do this. Skipping.")
+        print("Gandu ye banda add nahi ho skta.")
     except:
         traceback.print_exc()
         print("Unexpected Error")
