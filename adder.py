@@ -7,16 +7,17 @@ import sys
 import csv
 import traceback
 import time
+import random
  
-api_id = 1069857
-api_hash = '65cb4e058d3fac480e70091f028a8e55'
-phone = '+16122684115'
+api_id = 123456
+api_hash = 'YOUR_API_HASH'
+phone = '+111111111111'
 client = TelegramClient(phone, api_id, api_hash)
  
 client.connect()
 if not client.is_user_authorized():
     client.send_code_request(phone)
-    client.sign_in(phone, input('Verification Code enter kar: '))
+    client.sign_in(phone, input('Verification Code de: '))
  
 input_file = sys.argv[1]
 users = []
@@ -52,22 +53,27 @@ for chat in chats:
     except:
         continue
  
-print('Group select kar:')
+print('Choose a group to add members:')
 i=0
 for group in groups:
     print(str(i) + '- ' + group.title)
     i+=1
  
-g_index = input("Enter a Number: ")
+g_index = input("Number Enter Kar: ")
 target_group=groups[int(g_index)]
  
 target_group_entity = InputPeerChannel(target_group.id,target_group.access_hash)
  
 mode = int(input("Enter 1 to add by username or 2 to add by ID: "))
  
+n = 0
+ 
 for user in users:
+    n += 1
+    if n % 50 == 0:
+    sleep(100)
     try:
-        print ("By @Wrong_User_Name. Adding {}".format(user['id']))
+        print ("Adding {}".format(user['id']))
         if mode == 1:
             if user['username'] == "":
                 continue
@@ -77,12 +83,12 @@ for user in users:
         else:
             sys.exit("Gandu sahi mode select kar.")
         client(InviteToChannelRequest(target_group_entity,[user_to_add]))
-        print("10 Seconds ruk jaa...")
-        time.sleep(10)
+        print("Gandu Thodi Der Ruk Jaa. Script by @Wrong_User_Name")
+        time.sleep(random.randrange(10, 20))
     except PeerFloodError:
-        print("Gandu bohot add kar diye. Ab kal aana. By @Wrong_User_Name.")
+        print("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
     except UserPrivacyRestrictedError:
-        print("Gandu ye banda add nahi ho skta.")
+        print("The user's privacy settings do not allow you to do this. Skipping.")
     except:
         traceback.print_exc()
         print("Unexpected Error")
