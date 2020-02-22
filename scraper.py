@@ -3,9 +3,9 @@ from telethon.tl.functions.messages import GetDialogsRequest
 from telethon.tl.types import InputPeerEmpty
 import csv
  
-api_id = 123456
-api_hash = 'YOUR_API_HASH'
-phone = '+111111111111'
+api_id = 1195586
+api_hash = '143edb189fe0a065f827b19a60112ec7'
+phone = '+15742213318'
 client = TelegramClient(phone, api_id, api_hash)
  
 client.connect()
